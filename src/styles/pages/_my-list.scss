@@ -1,0 +1,9 @@
+.my-list {
+  margin-bottom: 2rem;
+
+  &__types {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+}

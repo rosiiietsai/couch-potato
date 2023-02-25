@@ -1,0 +1,66 @@
+.footer {
+  background-color: $color-gray-dark;
+  color: $color-gray-light;
+  margin-top: auto;
+  font-size: 1.4rem;
+
+  &__main {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    border-bottom: 1px $color-gray solid;
+    padding: 2rem 0;
+
+    @include response-sm {
+      flex-direction: column;
+      gap: 3rem;
+    }
+  }
+
+  &__logo {
+    width: 10rem;
+
+    & img {
+      width: 100%;
+      display: block;
+    }
+
+    @include response-sm {
+      order: 1;
+    }
+  }
+
+  &__social-media {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    @include response-md {
+      gap: 1.5rem;
+    }
+  }
+
+  &__copyright {
+    text-align: center;
+    padding: 3rem 0 2rem;
+  }
+
+  &__attribution {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    @include response-md {
+      gap: 1.5rem;
+    }
+  }
+
+  &__attribution-logo {
+    width: 6.5rem;
+
+    & img {
+      width: 100%;
+    }
+  }
+}

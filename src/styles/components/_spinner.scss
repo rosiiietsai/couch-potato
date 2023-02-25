@@ -1,0 +1,26 @@
+.spinner {
+  background-color: rgba($color-gray, 0.3);
+  border-radius: 10px;
+  font-size: 5rem;
+  color: $color-primary;
+  padding: 1.5rem;
+
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+
+  & svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: 1s steps(12) infinite rotate;
+  }
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,22 @@
+.icon {
+  &--primary {
+    color: $color-primary;
+  }
+
+  &--star {
+    color: $color-yellow;
+    margin-top: -3px;
+  }
+
+  &--heart {
+    color: $color-red;
+  }
+
+  &--gray {
+    color: $color-gray-light;
+  }
+
+  &--watchlist {
+    color: $color-blue;
+  }
+}

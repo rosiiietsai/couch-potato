@@ -1,0 +1,9 @@
+.home {
+  &__hero {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    aspect-ratio: 16/9;
+  }
+}

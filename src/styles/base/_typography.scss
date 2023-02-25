@@ -1,0 +1,71 @@
+.heading-1 {
+  font-size: 2.8rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+
+  @include response-md {
+    font-size: 2.6rem;
+  }
+
+  @include response-sm {
+    font-size: 2.25rem;
+  }
+
+  @include response-xs {
+    font-size: 2rem;
+  }
+}
+
+.heading-2 {
+  font-size: 2rem;
+}
+
+.section {
+  padding: 1rem 0;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+
+  & svg {
+    margin-right: 2rem;
+  }
+}
+
+.error {
+  font-size: 1.4rem;
+  margin: 2rem 0;
+  color: $color-red;
+
+  &--large {
+    font-size: 1.8rem;
+  }
+
+  &--center {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.wrapper {
+  max-width: 120rem;
+  padding: 1rem 2rem;
+  margin: 0 auto;
+
+  &--narrow {
+    padding: 0.8rem 1rem;
+  }
+
+  &--large {
+    padding: 1rem 4rem;
+  }
+
+  @include response-sm {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

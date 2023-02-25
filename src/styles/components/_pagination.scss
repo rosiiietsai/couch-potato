@@ -1,0 +1,22 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 4rem;
+
+  &__page {
+    transition: color 0.3s;
+
+    &--active {
+      text-decoration: underline 1px solid $color-primary;
+      font-weight: 600;
+    }
+
+    &--active:active,
+    &--active:visited,
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}

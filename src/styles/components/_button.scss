@@ -1,0 +1,118 @@
+.btn {
+  text-align: center;
+  display: inline-block;
+  background-color: transparent;
+  border: none;
+  line-height: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  &--large {
+    width: 9rem;
+    padding: 1rem 0;
+    border-radius: 5px;
+    font-size: 1.5rem;
+  }
+
+  &--bold {
+    font-weight: 700;
+  }
+
+  &--primary {
+    background-color: $color-primary;
+    border: 1px solid $color-primary;
+
+    &,
+    &:visited,
+    &:link {
+      color: $color-gray-darkest;
+    }
+  }
+
+  &--dark {
+    border: 1px solid $color-primary;
+
+    &,
+    &:visited,
+    &:link {
+      color: $color-primary;
+    }
+  }
+
+  &--round {
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 50%;
+  }
+
+  &__player {
+    color: $color-white;
+    border: none;
+    background-color: $color-red;
+    padding: 1.2rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    box-shadow: 0 1rem 2rem rgba(#000, 0.2);
+
+    & svg {
+      margin-right: 1rem;
+    }
+  }
+
+  &__watchlist {
+    font-size: 3rem;
+    position: relative;
+
+    &::after {
+      content: '\2713';
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1rem;
+      color: $color-white;
+
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    &--inactive::after {
+      content: '\002b';
+      font-size: 1.4rem;
+      color: rgba($color-white, 0.5);
+    }
+  }
+
+  &__heart,
+  &__watchlist {
+    &--inactive {
+      &:hover svg {
+        color: rgba($color-gray-light, 0.5);
+      }
+
+      & svg {
+        color: rgba($color-gray, 0.8);
+        transition: all 0.3s ease-out;
+      }
+    }
+  }
+
+  &__menu {
+    color: $color-white;
+    font-size: 3rem;
+    width: 3rem;
+    height: 3rem;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__social-media {
+    font-size: 1.8rem;
+  }
+}

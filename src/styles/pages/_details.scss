@@ -1,0 +1,190 @@
+.details {
+  &__main {
+    margin-top: 2rem;
+    // background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @include response-lg {
+      background-size: 0;
+    }
+
+    &--bg-filter {
+      margin: -1rem 0;
+      backdrop-filter: sepia(90%) contrast(60%) brightness(40%);
+      background-image: linear-gradient(
+        to right,
+        rgba($color-primary, 1),
+        rgba($color-primary, 0.2)
+      );
+
+      @include response-lg {
+        background-image: linear-gradient(
+          to right,
+          rgba($color-primary, 0.45),
+          rgba($color-primary, 0.45)
+        );
+      }
+    }
+
+    &--bg-filter > .wrapper--large {
+      display: flex;
+      gap: 5rem;
+      align-items: center;
+      max-width: 120rem;
+      margin: 0 auto;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+
+      @include response-lg {
+        flex-wrap: wrap;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        gap: 1.5rem;
+      }
+
+      @include response-sm {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        gap: 1rem;
+      }
+    }
+  }
+
+  &__poster {
+    aspect-ratio: 2/3;
+    flex: 0 0 30%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1rem 2rem rgba(#000, 0.2);
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    &--placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $color-gray-light;
+      color: $color-gray;
+    }
+  }
+
+  &__backdrop {
+    display: none;
+
+    flex: 1;
+    align-self: stretch;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1rem 2rem rgba(#000, 0.2);
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @include response-lg {
+      display: block;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+
+    @include response-lg {
+      flex: 0 0 100%;
+    }
+  }
+
+  &__title {
+    margin-bottom: 0.5rem;
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+  }
+
+  &__subtitle {
+    display: flex;
+    font-size: 1.5rem;
+    flex-wrap: wrap;
+
+    & p:not(:last-child)::after {
+      content: '\2022';
+      padding: 0.8rem;
+    }
+  }
+
+  &__tagline {
+    font-style: italic;
+    color: $color-gray-dark;
+    font-size: 1.8rem;
+    margin-top: 1rem;
+  }
+
+  &__overview {
+    padding: 1rem 0;
+  }
+
+  &__genres {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  &__genre {
+    background-color: $color-gray-dark;
+    padding: 0.1rem 0.8rem;
+    border-radius: 20px;
+    font-size: 1.4rem;
+  }
+
+  &__status {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem 0 0;
+  }
+
+  &__heart {
+    font-size: 2.2rem;
+    margin-top: 0.1rem;
+  }
+
+  &__watchlist {
+    font-size: 2.5rem;
+  }
+
+  &__trailer-wrapper {
+    position: relative;
+    padding-top: 56.25%; // 9/16 = 0.5625
+  }
+
+  &__trailer {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

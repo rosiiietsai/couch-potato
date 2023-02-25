@@ -1,0 +1,95 @@
+.card-scroller {
+  position: relative;
+
+  &__content {
+    margin: 0 1rem;
+    overflow-x: scroll;
+
+    // for Firefox
+    scrollbar-width: none;
+
+    // for Chrome, Safari, Edge
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__items {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+    margin: 1rem 0;
+  }
+
+  &__item {
+    width: 20rem;
+    transition: all 0.5s ease-in;
+
+    &--inactive {
+      opacity: 0.3;
+      transform: translateY(1rem);
+    }
+
+    @include response-xs {
+      width: 17rem;
+    }
+  }
+
+  &__item-skeleton {
+    width: 20rem;
+    height: 38rem;
+    border-radius: 5px;
+
+    @include response-xs {
+      width: 17rem;
+      height: 34.75rem;
+    }
+  }
+
+  &__btn {
+    background-color: rgba($color-gray, 0.6);
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1rem 3rem rgba(#000, 0.2);
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+    z-index: 5;
+
+    &--left {
+      left: 1rem;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    &--right {
+      right: -4rem;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    &:hover {
+      background-color: rgba($color-gray, 0.85);
+      color: $color-primary;
+    }
+
+    @include response-md {
+      width: 4rem;
+      height: 4rem;
+
+      &--right {
+        right: -3rem;
+      }
+    }
+  }
+
+  &__btn-icon {
+    font-size: 3rem;
+
+    @include response-md {
+      font-size: 2rem;
+    }
+  }
+}

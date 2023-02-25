@@ -1,0 +1,113 @@
+.navbar {
+  background-color: $color-gray-dark;
+  z-index: 10;
+  width: 100%;
+  box-shadow: 0px 0.6rem 1rem 1px rgba(#000, 0.2);
+
+  position: sticky;
+  top: 0;
+
+  & .wrapper {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+
+    @include response-sm {
+      gap: 2rem;
+    }
+
+    @include response-xs {
+      gap: 1rem;
+    }
+  }
+
+  &__items {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    @include response-xl {
+      gap: 1rem;
+    }
+  }
+
+  &__link {
+    padding: 1rem;
+
+    & a {
+      transition: all 0.5s ease-out;
+    }
+
+    & a:hover {
+      color: $color-primary;
+    }
+
+    @include response-lg {
+      display: none;
+    }
+  }
+
+  &__logo {
+    width: 10rem;
+
+    & img {
+      width: 100%;
+      display: block;
+    }
+
+    @include response-xs {
+      width: 8rem;
+    }
+  }
+
+  &__searchbar {
+    margin: 0 auto;
+    flex: 1;
+  }
+
+  &__auth {
+    display: flex;
+    gap: 1rem;
+
+    @include response-md {
+      display: none;
+    }
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 15rem;
+    justify-content: flex-end;
+    padding: 1rem 0;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    @include response-md {
+      display: none;
+    }
+  }
+
+  // in case display name is too long
+  &__display-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__menu {
+    position: relative;
+
+    display: none;
+
+    @include response-md {
+      display: block;
+    }
+  }
+}

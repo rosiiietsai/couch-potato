@@ -1,0 +1,44 @@
+// browser default 1em = 16 px
+// normal style applies at 1200-1600px (xl-2xl)
+
+@mixin response-2xl {
+  // 1600px/16px = 100em
+  @media only screen and (min-width: 100em) {
+    @content;
+  }
+}
+
+@mixin response-xl {
+  // 1200px/16px = 75em
+  @media only screen and (max-width: 75em) {
+    @content;
+  }
+}
+
+@mixin response-lg {
+  // 1000px/16px = 62.5em
+  @media only screen and (max-width: 62.5em) {
+    @content;
+  }
+}
+
+@mixin response-md {
+  // 760px/16px = 47.5em
+  @media only screen and (max-width: 47.5em) {
+    @content;
+  }
+}
+
+@mixin response-sm {
+  // 600px/16px = 37.5em
+  @media only screen and (max-width: 37.5em) {
+    @content;
+  }
+}
+
+@mixin response-xs {
+  // 400px/16px = 25em
+  @media only screen and (max-width: 25em) {
+    @content;
+  }
+}
