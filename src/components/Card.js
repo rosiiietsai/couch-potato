@@ -8,7 +8,6 @@ import { useFetchCollectionQuery } from '../store';
 import { useFormatDate } from '../hooks/useFormatDate';
 import { useChangeUserMedia } from '../hooks/useChangeUserMedia';
 import { useImgSrc } from '../hooks/useImgSrc';
-import Skeleton from './Skeleton';
 
 // forwardRef lets component expose a DOM node to parent component with a ref
 export const Card = forwardRef(({ data, mediaType, index, className }, ref) => {
