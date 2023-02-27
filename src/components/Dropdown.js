@@ -29,7 +29,9 @@ export default function Dropdown({ options, value, onChange, className = '' }) {
     <div
       className={`dropdown ${className}`}
       onClick={() => setIsOpen(!isOpen)}
-      ref={dropdownRef}>
+      ref={dropdownRef}
+      // can be focused by tab
+      tabIndex="0">
       <div className="dropdown__label">
         <span> {value.label}</span>
         {isOpen ? (

@@ -15,6 +15,9 @@
     background-color: $color-white;
     width: 100%;
 
+    // fix the ios input shadow
+    -webkit-appearance: none;
+
     &:focus-visible {
       outline: none;
     }
@@ -42,11 +45,14 @@
     }
   }
 
-  // glow effect
   & input:not(.auth-form__password-input):focus-visible,
   &__password-field:focus-within {
-    outline: 1px solid $color-primary;
-    box-shadow: 0 0 8px $color-primary;
+    // border-radius doesn't affect outline on mobile
+    // outline: 1px solid $color-primary;
+
+    // glow effect
+    // box-shadow: 0 0 8px $color-primary;
+    box-shadow: 0 0 6px 2px $color-primary;
   }
 
   &__label {

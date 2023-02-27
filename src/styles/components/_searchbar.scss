@@ -1,7 +1,6 @@
 .searchbar {
   display: flex;
   align-items: center;
-  justify-content: center;
   margin: 0 3rem;
 
   border-radius: 5rem;
@@ -13,9 +12,12 @@
   }
 
   &:focus-within {
+    // border-radius doesn't affect outline on mobile
+    // outline: 1.5px solid $color-primary;
+
     // glow effect
-    box-shadow: 0 0 8px $color-primary;
-    outline: 1.5px solid $color-primary;
+    // box-shadow: 0 0 8px $color-primary;
+    box-shadow: 0 0 6px 2px $color-primary;
   }
 
   & form {
