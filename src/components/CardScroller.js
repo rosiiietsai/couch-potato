@@ -7,6 +7,8 @@ export default function CardScroller({ data, mediaType, className = '' }) {
   const [displayedItemFirstIndex, setDisplayedItemFirstIndex] = useState(0);
   const [displayedItemLastIndex, setDisplayedItemLastIndex] = useState(0);
   const [windowWidth, setWindowWidth] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+
   const scrollerContentRef = useRef();
   const itemsRef = useRef([]);
 
@@ -43,7 +45,7 @@ export default function CardScroller({ data, mediaType, className = '' }) {
   //   });
   // };
 
-  const goToPreCard = () => {
+  const goToPrevCard = () => {
     if (displayedItemFirstIndex === 0) return;
     // scrollToItem(displayedItemFirstIndex - 1);
 
@@ -94,6 +96,21 @@ export default function CardScroller({ data, mediaType, className = '' }) {
     }
   };
 
+  // for touch device
+  const handleTouchMove = e => {
+    if (touchStart === null) return;
+
+    const currentTouch = e.targetTouches[0].clientX;
+    const diff = touchStart - currentTouch;
+    const threshold = 50;
+
+    // swipe right or left -> active all items
+    if (diff > threshold || diff < -threshold) {
+      setDisplayedItemFirstIndex(0);
+      setDisplayedItemLastIndex(data.length - 1);
+    }
+  };
+
   // for window resize listener
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -122,11 +139,15 @@ export default function CardScroller({ data, mediaType, className = '' }) {
       {displayedItemFirstIndex !== 0 && (
         <div
           className="card-scroller__btn card-scroller__btn--left"
-          onClick={goToPreCard}>
+          onClick={goToPrevCard}>
           <FaAngleLeft className="card-scroller__btn-icon" />
         </div>
       )}
-      <div className="card-scroller__content" ref={scrollerContentRef}>
+      <div
+        className="card-scroller__content"
+        ref={scrollerContentRef}
+        onTouchStart={e => setTouchStart(e.targetTouches[0].clientX)}
+        onTouchMove={handleTouchMove}>
         <div className="card-scroller__items">
           {data.map((item, i) => (
             <Card

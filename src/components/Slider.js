@@ -7,6 +7,7 @@ export default function Slider({ data }) {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(1);
   const [toggleTransition, setToggleTransition] = useState(true);
   const [isTransitionEnd, setIsTransitionEnd] = useState(true);
+  const [touchStart, setTouchStart] = useState(null);
 
   // clone the first and the last one
   // e.g. 4' 0  1  2  3  4  0'
@@ -19,15 +20,17 @@ export default function Slider({ data }) {
     setToggleTransition(true);
     setCurrentSlideIndex(state => (state + 1) % slides.length);
     setIsTransitionEnd(false);
+    setTouchStart(null);
   };
 
-  const goToPreSlide = function () {
+  const goToPrevSlide = function () {
     // avoid going to prev slide before the transition ends
     if (!isTransitionEnd) return;
 
     setToggleTransition(true);
     setCurrentSlideIndex(state => (state - 1) % slides.length);
     setIsTransitionEnd(false);
+    setTouchStart(null);
   };
 
   // after transition, if the current slide is a clone, jump to the real one instead
@@ -47,9 +50,27 @@ export default function Slider({ data }) {
     }
   };
 
+  // for touch device
+  const handleTouchMove = e => {
+    if (touchStart === null) return;
+
+    const currentTouch = e.targetTouches[0].clientX;
+    const diff = touchStart - currentTouch;
+    const threshold = 50;
+
+    // swipe right
+    if (diff > threshold) goToNextSlide();
+
+    // swipe left
+    if (diff < -threshold) goToPrevSlide();
+  };
+
   return (
-    <div className="slider">
-      <button className="slider__btn slider__btn--left" onClick={goToPreSlide}>
+    <div
+      className="slider"
+      onTouchStart={e => setTouchStart(e.targetTouches[0].clientX)}
+      onTouchMove={handleTouchMove}>
+      <button className="slider__btn slider__btn--left" onClick={goToPrevSlide}>
         <BsChevronCompactLeft />
       </button>
 
