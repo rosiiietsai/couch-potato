@@ -11,10 +11,11 @@
   transform: translateX(-50%);
   z-index: 20;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   & svg {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     animation: 1s steps(12) infinite rotate;
   }
 }
