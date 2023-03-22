@@ -13,10 +13,10 @@ export default function Slide({
   toggleTransition,
 }) {
   const { data: images, isLoading } = useGetMovieImagesQuery(data.id);
-  const src1280 = useImgSrc(images?.backdrops[0].file_path, 1280);
-  const src780 = useImgSrc(images?.backdrops[0].file_path, 780);
-  const src500 = useImgSrc(images?.backdrops[0].file_path, 500);
-  const src400 = useImgSrc(images?.backdrops[0].file_path, 400);
+  const src1280 = useImgSrc(images?.backdrops[0]?.file_path, 1280);
+  const src780 = useImgSrc(images?.backdrops[0]?.file_path, 780);
+  const src500 = useImgSrc(images?.backdrops[0]?.file_path, 500);
+  const src400 = useImgSrc(images?.backdrops[0]?.file_path, 400);
 
   // currentSlideIndex = 0, translateX: 0%, 100%, 200%, 300%, 400%
   // currentSlideIndex = 1, translateX: -100$, 0%, 100%, 200%, 300%
@@ -25,15 +25,14 @@ export default function Slide({
   return (
     <>
       {isLoading && <Skeleton itemClassName="home__hero" times={1} />}
-
-      {images?.backdrops[0] && (
-        <div
-          className="slider__slide"
-          style={{
-            transform: `translateX(${(slideIndex - currentSlideIndex) * 100}%)`,
-            transition: `all ${toggleTransition ? '0.6s' : '0s'}`,
-          }}
-          onTransitionEnd={onTransitionEnd}>
+      <div
+        className="slider__slide"
+        style={{
+          transform: `translateX(${(slideIndex - currentSlideIndex) * 100}%)`,
+          transition: `all ${toggleTransition ? '0.6s' : '0s'}`,
+        }}
+        onTransitionEnd={onTransitionEnd}>
+        {images?.backdrops[0] ? (
           <Link to={`/movie/${data.id}`}>
             <img
               srcSet={`${src1280} 1280w, ${src780} 780w, ${src500} 500w, ${src400} 400w`}
@@ -42,8 +41,12 @@ export default function Slide({
               loading="lazy"
             />
           </Link>
-        </div>
-      )}
+        ) : (
+          <div className="slider__slide--placeholder">
+            No backdrop available
+          </div>
+        )}
+      </div>
     </>
   );
 }

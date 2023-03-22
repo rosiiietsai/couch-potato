@@ -25,6 +25,14 @@
       display: block;
       object-fit: cover;
     }
+
+    &--placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $color-gray-light;
+      height: 100%;
+    }
   }
 
   &__btn {
