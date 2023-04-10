@@ -56,7 +56,8 @@ export default function NavBar() {
             <li
               className="navbar__user"
               onMouseEnter={() => setToggleMenu(true)}
-              onMouseLeave={() => setToggleMenu(false)}>
+              onMouseLeave={() => setToggleMenu(false)}
+              onClick={() => setToggleMenu(!toggleMenu)}>
               <FaUser className="icon--primary" />
               <span className="navbar__display-name">
                 Hi, {user.displayName}
