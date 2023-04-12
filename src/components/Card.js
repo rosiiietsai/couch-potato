@@ -52,13 +52,18 @@ export const Card = forwardRef(({ data, mediaType, index, className }, ref) => {
   useEffect(() => {
     if (!userMedia) return;
 
-    setIsWatchlist(
-      userMedia.some(item => +item.id === media.id && item.isWatchlist)
-    );
-    setIsFavorite(
-      userMedia.some(item => +item.id === media.id && item.isFavorite)
-    );
-  }, [media.id, setIsFavorite, setIsWatchlist, userMedia]);
+    if (user) {
+      setIsWatchlist(
+        userMedia.some(item => +item.id === media.id && item.isWatchlist)
+      );
+      setIsFavorite(
+        userMedia.some(item => +item.id === media.id && item.isFavorite)
+      );
+    } else {
+      setIsWatchlist(null);
+      setIsFavorite(null);
+    }
+  }, [user, media.id, setIsFavorite, setIsWatchlist, userMedia]);
 
   return (
     <div
